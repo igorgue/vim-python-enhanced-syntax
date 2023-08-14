@@ -40,8 +40,7 @@ syn region pythonDocstring  start=+^\s*[uU]\?[rR]\?'''+ end=+'''+ keepend exclud
 " =======================================
 
 " Use brighter color for method/function definition
-hi pythonFunction       ctermfg=191     guifg=#d7ff5f
-hi pythonParam          ctermfg=229     guifg=#ffffaf
+hi link pythonFunction Function
 
 " python function definition (parameters)
 syn keyword     pythonStatement         def nextgroup=pythonFunction skipwhite
@@ -96,8 +95,7 @@ hi link         pythonCallBuiltinFunc   pythonBuiltinFunc
 " then, match parenthesis. inside it, we contain comma-separated python expressions.
 syn region      pythonCallRegion        contained matchgroup=pythonParamsDelim start=/(/  end=/)/ keepend extend
                                         \ contains=pythonCallComma,pythonCall,@pythonCallArgument,pythonCallArgKeyword
-hi! def link    pythonParamsDelim       Delimiter
-hi              pythonParamsDelim       ctermfg=148     guifg=#afd700
+hi link    pythonParamsDelim       Delimiter
 
 syn match       pythonCallComma         contained /,/ display nextgroup=pythonCommaError skipwhite skipnl skipempty
 hi! def link    pythonCallComma         pythonParamsDelim
@@ -112,8 +110,7 @@ syn cluster     pythonCallArgument      contains=pythonComment,pythonCall,python
 
 " Highlight keyword argument in python function call
 syn match       pythonCallArgKeyword    contained /\h\i*\ze\s*==\@!/
-hi! def link    pythonCallArgKeyword    Special
-hi              pythonCallArgKeyword    ctermfg=179     guifg=#dfaf5f
+hi link    pythonCallArgKeyword    Special
 " }}}
 
 
