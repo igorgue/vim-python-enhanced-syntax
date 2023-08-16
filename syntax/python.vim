@@ -93,8 +93,8 @@ hi link         pythonCallBuiltinFunc   pythonBuiltinFunc
 
 
 " then, match parenthesis. inside it, we contain comma-separated python expressions.
-syn region      pythonCallRegion        contained matchgroup=pythonParamsDelim start=/(/  end=/)/ keepend extend
-                                        \ contains=pythonCallComma,pythonCall,@pythonCallArgument,pythonCallArgKeyword
+" syn region      pythonCallRegion        contained matchgroup=pythonParamsDelim start=/(/  end=/)/ keepend extend
+"                                         \ contains=pythonCallComma,pythonCall,@pythonCallArgument,pythonCallArgKeyword
 hi link    pythonParamsDelim       Delimiter
 
 syn match       pythonCallComma         contained /,/ display nextgroup=pythonCommaError skipwhite skipnl skipempty
