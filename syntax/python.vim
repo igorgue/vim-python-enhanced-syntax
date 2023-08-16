@@ -91,25 +91,25 @@ endfunction
 call s:convert_syntax_keyword_containedin('pythonBuiltinType', 'pythonCallBuiltinType')
 call s:convert_syntax_keyword_containedin('pythonBuiltinFunc', 'pythonCallBuiltinFunc')
 
-syn match       pythonCall              /\<\h\i*\ze\s*(/    contains=pythonCallBuiltinType,pythonCallBuiltinFunc
-                                                            \ nextgroup=pythonCallRegion skipwhite keepend
-hi link         pythonCallBuiltinType   pythonBuiltinType
-hi link         pythonCallBuiltinFunc   pythonBuiltinFunc
-
-
-" then, match parenthesis. inside it, we contain comma-separated python expressions.
-syn region      pythonCallRegion        contained matchgroup=pythonParamsDelim start="("  end=")" keepend extend
-                                        \ contains=pythonCallComma,pythonCall,pythonCallArgKeyword
-hi link    pythonParamsDelim       Delimiter
-
-syn match       pythonCallComma         contained /,/ display nextgroup=pythonCommaError skipwhite skipnl skipempty
-hi! def link    pythonCallComma         pythonParamsDelim
-syn match       pythonCommaError        contained /,/ extend display
-hi! link        pythonCommaError        Error
-
-" Highlight keyword argument in python function call
-syn match       pythonCallArgKeyword    contained /\h\i*\ze\s*==\@!/
-hi link    pythonCallArgKeyword    Special
+" syn match       pythonCall              /\<\h\i*\ze\s*(/    contains=pythonCallBuiltinType,pythonCallBuiltinFunc
+"                                                             \ nextgroup=pythonCallRegion skipwhite keepend
+" hi link         pythonCallBuiltinType   pythonBuiltinType
+" hi link         pythonCallBuiltinFunc   pythonBuiltinFunc
+"
+"
+" " then, match parenthesis. inside it, we contain comma-separated python expressions.
+" syn region      pythonCallRegion        contained matchgroup=pythonParamsDelim start="("  end=")" keepend extend
+"                                         \ contains=pythonCallComma,pythonCall,pythonCallArgKeyword
+" hi link    pythonParamsDelim       Delimiter
+"
+" syn match       pythonCallComma         contained /,/ display nextgroup=pythonCommaError skipwhite skipnl skipempty
+" hi! def link    pythonCallComma         pythonParamsDelim
+" syn match       pythonCommaError        contained /,/ extend display
+" hi! link        pythonCommaError        Error
+"
+" " Highlight keyword argument in python function call
+" syn match       pythonCallArgKeyword    contained /\h\i*\ze\s*==\@!/
+" hi link    pythonCallArgKeyword    Special
 " }}}
 
 
